@@ -26,8 +26,11 @@ RUN yum makecache fast ; \
   yum -y install \
       sudo \
       which \
-      python-pip ; \
-  yum clean all
+      python-pip
+
+RUN yum clean all ; \
+  yum -y autoremove ; \
+  rm -rf /var/cache/yum ;
 
 VOLUME ["/sys/fs/cgroup"]
 
